@@ -1,0 +1,1 @@
+export { CustomerLoginPage as default } from "@/components/customer/login";

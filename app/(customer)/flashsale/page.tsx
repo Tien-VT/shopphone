@@ -1,0 +1,1 @@
+export { CustomerFlashSalePage as default } from "@/components/customer/flash-sale";

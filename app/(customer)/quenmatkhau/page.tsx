@@ -1,0 +1,1 @@
+export { CustomerForgotPasswordPage as default } from "@/components/customer/forgot-password";

@@ -1,0 +1,1 @@
+export { CustomerContactPage as default } from "@/components/customer/contact";

@@ -1,0 +1,1 @@
+export { CustomerProductDetailPage as default } from "@/components/customer/product-detail";

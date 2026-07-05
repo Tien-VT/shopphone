@@ -1,0 +1,1 @@
+export { CustomerPromoPage as default } from "@/components/customer/promo";

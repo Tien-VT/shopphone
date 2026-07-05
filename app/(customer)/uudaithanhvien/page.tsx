@@ -1,0 +1,1 @@
+export { CustomerMembershipPromoPage as default } from "@/components/customer/membership-promo";

@@ -1,0 +1,1 @@
+export { CustomerNewsPage as default } from "@/components/customer/news";

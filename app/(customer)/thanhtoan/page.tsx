@@ -1,0 +1,1 @@
+export { CustomerCheckoutPage as default } from "@/components/customer/checkout";

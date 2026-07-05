@@ -1,0 +1,1 @@
+export { CustomerWishlistPage as default } from "@/components/customer/wishlist";

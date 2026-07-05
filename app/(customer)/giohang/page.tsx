@@ -1,0 +1,1 @@
+export { CustomerCartPage as default } from "@/components/customer/cart";

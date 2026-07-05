@@ -1,0 +1,1 @@
+export { CustomerProductListPage as default } from "@/components/customer/product-list";
