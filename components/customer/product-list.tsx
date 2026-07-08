@@ -55,7 +55,7 @@ export function CustomerProductListPage() {
   useEffect(() => {
     fetch("/api/categories")
       .then((res) => res.json())
-      .then((data) => setCategories(data || []))
+      .then((data) => setCategories(Array.isArray(data) ? data : []))
       .catch((err) => console.error("Error categories:", err));
   }, []);
 

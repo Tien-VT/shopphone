@@ -106,89 +106,104 @@ const iconsCategories = [
   { label: "Xem thêm", image: "/giaodienkhachhang/icon/more.png" }
 ];
 
-const flashSaleProducts = [
+const fallbackFlashSaleProducts = [
   {
+    id: 991,
     name: "Apple AirPods Pro 2 (USB-C)",
-    price: "5.990.000đ",
-    oldPrice: "7.490.000đ",
-    discount: "-20%",
-    image: "https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?auto=format&fit=crop&w=200&q=80",
-    rating: 5,
-    reviews: 125
+    slug: "apple-airpods-pro-2-usb-c",
+    price: 5990000,
+    old_price: 7490000,
+    is_flash_sale: true,
+    flash_sale_discount_percent: 20,
+    product_images: [{ image_url: "https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?auto=format&fit=crop&w=200&q=80" }],
+    categories: { name: "Tai nghe" }
   },
   {
+    id: 992,
     name: "MacBook Air M2 13 inch 2024",
-    price: "21.990.000đ",
-    oldPrice: "25.990.000đ",
-    discount: "-15%",
-    image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=200&q=80",
-    rating: 4.5,
-    reviews: 89
+    slug: "macbook-air-m2-13-inch-2024",
+    price: 21990000,
+    old_price: 25990000,
+    is_flash_sale: true,
+    flash_sale_discount_percent: 15,
+    product_images: [{ image_url: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=200&q=80" }],
+    categories: { name: "Laptop" }
   },
   {
+    id: 993,
     name: "Apple Watch Series 9 41mm GPS",
-    price: "8.990.000đ",
-    oldPrice: "11.990.000đ",
-    discount: "-25%",
-    image: "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=200&q=80",
-    rating: 5,
-    reviews: 64
+    slug: "apple-watch-series-9-41mm-gps",
+    price: 8990000,
+    old_price: 11990000,
+    is_flash_sale: true,
+    flash_sale_discount_percent: 25,
+    product_images: [{ image_url: "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=200&q=80" }],
+    categories: { name: "Đồng hồ" }
   },
   {
+    id: 994,
     name: "Samsung Galaxy S24 Ultra 5G",
-    price: "26.990.000đ",
-    oldPrice: "29.990.000đ",
-    discount: "-10%",
-    image: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=200&q=80",
-    rating: 4,
-    reviews: 78
+    slug: "samsung-galaxy-s24-ultra-5g",
+    price: 26990000,
+    old_price: 29990000,
+    is_flash_sale: true,
+    flash_sale_discount_percent: 10,
+    product_images: [{ image_url: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=200&q=80" }],
+    categories: { name: "Điện thoại" }
   },
   {
+    id: 995,
     name: "Loa Bluetooth JBL Charge 5 Chính Hãng",
-    price: "3.490.000đ",
-    oldPrice: "3.990.000đ",
-    discount: "-15%",
-    image: "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=200&q=80",
-    rating: 5,
-    reviews: 92
+    slug: "loa-bluetooth-jbl-charge-5",
+    price: 3490000,
+    old_price: 3990000,
+    is_flash_sale: true,
+    flash_sale_discount_percent: 15,
+    product_images: [{ image_url: "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=200&q=80" }],
+    categories: { name: "Loa & Âm thanh" }
   }
 ];
 
-const suggestionsProducts = [
+const fallbackSuggestionsProducts = [
   {
+    id: 981,
     name: "iPad Pro 11 inch M2 Wi-Fi 128GB",
-    price: "20.490.000đ",
-    image: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=200&q=80",
-    rating: 5,
-    reviews: 24
+    slug: "ipad-pro-11-inch-m2-wi-fi-128gb",
+    price: 20490000,
+    product_images: [{ image_url: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=200&q=80" }],
+    categories: { name: "Máy tính bảng" }
   },
   {
+    id: 982,
     name: "Tai nghe Chụp Tai Sony WH-1000XM5",
-    price: "7.990.000đ",
-    image: "https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?auto=format&fit=crop&w=200&q=80",
-    rating: 4,
-    reviews: 156
+    slug: "tai-nghe-chup-tai-sony-wh-1000xm5",
+    price: 7990000,
+    product_images: [{ image_url: "https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?auto=format&fit=crop&w=200&q=80" }],
+    categories: { name: "Tai nghe" }
   },
   {
+    id: 983,
     name: "Chuột Không Dây Logitech MX Master 3S",
-    price: "2.490.000đ",
-    image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?auto=format&fit=crop&w=200&q=80",
-    rating: 4.5,
-    reviews: 412
+    slug: "chuot-khong-day-logitech-mx-master-3s",
+    price: 2490000,
+    product_images: [{ image_url: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?auto=format&fit=crop&w=200&q=80" }],
+    categories: { name: "Bàn phím & Chuột" }
   },
   {
+    id: 984,
     name: "Bàn phím cơ Keychron K8 Pro QMK/VIA",
-    price: "2.390.000đ",
-    image: "https://images.unsplash.com/photo-1595225476474-87563907a212?auto=format&fit=crop&w=200&q=80",
-    rating: 5,
-    reviews: 88
+    slug: "ban-phim-co-keychron-k8-pro",
+    price: 2390000,
+    product_images: [{ image_url: "https://images.unsplash.com/photo-1595225476474-87563907a212?auto=format&fit=crop&w=200&q=80" }],
+    categories: { name: "Bàn phím & Chuột" }
   },
   {
+    id: 985,
     name: "Màn hình LG 27UP600-W 27\" IPS 4K HDR400",
-    price: "6.890.000đ",
-    image: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=200&q=80",
-    rating: 4,
-    reviews: 35
+    slug: "man-hinh-lg-27up600-w-27-ips-4k",
+    price: 6890000,
+    product_images: [{ image_url: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=200&q=80" }],
+    categories: { name: "Màn hình máy tính" }
   }
 ];
 
@@ -220,8 +235,11 @@ export function CustomerHomePage() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [timeLeft, setTimeLeft] = useState({ hours: 12, minutes: 45, seconds: 30 });
   const [categories, setCategories] = useState<any[]>([]);
+  const [categoriesLoading, setCategoriesLoading] = useState(true);
   const [flashSaleProducts, setFlashSaleProducts] = useState<any[]>([]);
   const [suggestionsProducts, setSuggestionsProducts] = useState<any[]>([]);
+  const [flashSaleLoading, setFlashSaleLoading] = useState(true);
+  const [suggestionsLoading, setSuggestionsLoading] = useState(true);
   const [activeSale, setActiveSale] = useState<any | null>(null);
   const [visibleSuggestions, setVisibleSuggestions] = useState(10);
   const [faqOpenIdx, setFaqOpenIdx] = useState<number | null>(null);
@@ -231,54 +249,76 @@ export function CustomerHomePage() {
 
   const { addToCart, toggleWishlist, isInWishlist, openAuthModal, user } = useApp();
 
-  // Load dynamic data from APIs
+  // Load dynamic data from APIs progressively
   useEffect(() => {
-    async function loadData() {
-      try {
-        const [catsRes, fsRes, suggestRes, newsRes, reviewsRes] = await Promise.all([
-          fetch("/api/categories"),
-          fetch("/api/flashsales"),
-          fetch("/api/products?featured=true"),
-          fetch("/api/news"),
-          fetch("/api/reviews")
-        ]);
+    // Fetch categories
+    fetch("/api/categories")
+      .then((res) => (res.ok ? res.json() : Promise.reject()))
+      .then((data) => setCategories(Array.isArray(data) ? data : []))
+      .catch((err) => console.error("Error categories:", err))
+      .finally(() => setCategoriesLoading(false));
 
-        if (catsRes.ok) {
-          const catsData = await catsRes.json();
-          setCategories(catsData);
+    // Fetch flash sale products (exactly 5 products selected from admin)
+    setFlashSaleLoading(true);
+    fetch("/api/products?flash_sale=true")
+      .then((res) => (res.ok ? res.json() : Promise.reject()))
+      .then((prodData) => {
+        const items = prodData.items || [];
+        setFlashSaleProducts(items.slice(0, 5));
+      })
+      .catch((err) => console.error("Error fetching homepage flash sale products:", err))
+      .finally(() => setFlashSaleLoading(false));
+
+    // Fetch active sale for countdown timer
+    fetch("/api/flashsales")
+      .then((res) => (res.ok ? res.json() : Promise.reject()))
+      .then((fsData) => {
+        const foundActive = fsData.sales?.find((s: any) => {
+          const now = new Date().getTime();
+          const start = new Date(s.start_at).getTime();
+          const end = new Date(s.end_at).getTime();
+          return s.status === "active" && now >= start && now <= end;
+        }) || fsData.sales?.[0];
+        if (foundActive) {
+          setActiveSale(foundActive);
         }
-        if (fsRes.ok) {
-          const fsData = await fsRes.json();
-          setFlashSaleProducts(fsData.products || []);
-          const foundActive = fsData.sales?.find((s: any) => {
-            const now = new Date().getTime();
-            const start = new Date(s.start_at).getTime();
-            const end = new Date(s.end_at).getTime();
-            return s.status === "active" && now >= start && now <= end;
-          }) || fsData.sales?.[0];
-          if (foundActive) {
-            setActiveSale(foundActive);
-          }
+      })
+      .catch((err) => console.error("Error loading flash sale active timer:", err));
+
+    // Fetch products
+    setSuggestionsLoading(true);
+    fetch("/api/products?featured=true")
+      .then((res) => (res.ok ? res.json() : Promise.reject()))
+      .then((suggestData) => {
+        if (suggestData.items && suggestData.items.length > 0) {
+          setSuggestionsProducts(suggestData.items);
         }
-        if (suggestRes.ok) {
-          const suggestData = await suggestRes.json();
-          setSuggestionsProducts(suggestData.items || []);
-        }
-        if (newsRes.ok) {
-          const newsData = await newsRes.json();
-          setNewsArticles(newsData || []);
-        }
-        if (reviewsRes.ok) {
-          const reviewsData = await reviewsRes.json();
-          setDbReviews(reviewsData || []);
-        }
-      } catch (err) {
-        console.error("Failed to load homepage database data:", err);
-      } finally {
+      })
+      .catch((err) => console.error("Error suggest products:", err))
+      .finally(() => {
+        setSuggestionsLoading(false);
         setLoading(false);
-      }
-    }
-    loadData();
+      });
+
+    // Fetch news
+    fetch("/api/news")
+      .then((res) => (res.ok ? res.json() : Promise.reject()))
+      .then((newsData) => {
+        if (Array.isArray(newsData) && newsData.length > 0) {
+          setNewsArticles(newsData);
+        }
+      })
+      .catch((err) => console.error("Error news:", err));
+
+    // Fetch reviews
+    fetch("/api/reviews")
+      .then((res) => (res.ok ? res.json() : Promise.reject()))
+      .then((reviewsData) => {
+        if (Array.isArray(reviewsData) && reviewsData.length > 0) {
+          setDbReviews(reviewsData);
+        }
+      })
+      .catch((err) => console.error("Error reviews:", err));
   }, []);
 
   const addDbProductToCart = (product: any) => {
@@ -386,40 +426,47 @@ export function CustomerHomePage() {
       <div className="max-w-[1280px] mx-auto px-4 py-5">
         <div className="flex gap-5 items-stretch">
           {/* Sidebar */}
-          <aside className="w-[240px] shrink-0 bg-white border border-t-0 border-gray-200 rounded-b-xl overflow-hidden flex flex-col justify-between">
-            <ul className="text-[13px] text-gray-700 divide-y divide-gray-50">
-              {categoriesToRender.map((cat) => (
-                <li key={cat.id}>
-                  <Link href={`/sanpham?category=${cat.id}`} className="flex items-center justify-between px-4 py-2.5 hover:bg-purple-50 hover:text-brand-purple cursor-pointer group">
-                    <span className="flex items-center gap-3">
-                      {(() => {
-                        if (cat.icon && (cat.icon.startsWith("/") || cat.icon.startsWith("http"))) {
-                          return (
+          <aside className="w-[240px] shrink-0 bg-white border border-t-0 border-gray-200 rounded-b-xl overflow-hidden flex flex-col justify-between min-h-[300px]">
+            {categoriesLoading ? (
+              <div className="flex flex-col items-center justify-center py-20 text-gray-400 gap-2.5 flex-grow">
+                <i className="fa-solid fa-circle-notch fa-spin text-brand-purple text-[22px]"></i>
+                <span className="text-[12px] font-medium text-gray-500 tracking-wide animate-pulse">Đang tải danh mục...</span>
+              </div>
+            ) : (
+              <ul className="text-[13px] text-gray-700 divide-y divide-gray-50 w-full">
+                {categoriesToRender.map((cat) => (
+                  <li key={cat.id}>
+                    <Link href={`/sanpham?category=${cat.id}`} className="flex items-center justify-between px-4 py-2.5 hover:bg-purple-50 hover:text-brand-purple cursor-pointer group">
+                      <span className="flex items-center gap-3">
+                        {(() => {
+                          if (cat.icon && (cat.icon.startsWith("/") || cat.icon.startsWith("http"))) {
+                            return (
+                              <img
+                                src={cat.icon}
+                                className="w-4 h-4 object-contain opacity-60 group-hover:opacity-100 transition-all text-center"
+                                alt={cat.name}
+                              />
+                            );
+                          }
+                          const iconConfig = getCategoryIcon(cat.slug);
+                          return iconConfig.type === "image" ? (
                             <img
-                              src={cat.icon}
+                              src={iconConfig.value}
                               className="w-4 h-4 object-contain opacity-60 group-hover:opacity-100 transition-all text-center"
                               alt={cat.name}
                             />
+                          ) : (
+                            <i className={`${iconConfig.value} text-gray-400 group-hover:text-brand-purple w-4 text-center`}></i>
                           );
-                        }
-                        const iconConfig = getCategoryIcon(cat.slug);
-                        return iconConfig.type === "image" ? (
-                          <img
-                            src={iconConfig.value}
-                            className="w-4 h-4 object-contain opacity-60 group-hover:opacity-100 transition-all text-center"
-                            alt={cat.name}
-                          />
-                        ) : (
-                          <i className={`${iconConfig.value} text-gray-400 group-hover:text-brand-purple w-4 text-center`}></i>
-                        );
-                      })()}
-                      {cat.name}
-                    </span>
-                    <i className="fa-solid fa-chevron-right text-[10px] text-gray-300 group-hover:text-brand-purple"></i>
-                  </Link>
-                </li>
-              ))}
-            </ul>
+                        })()}
+                        {cat.name}
+                      </span>
+                      <i className="fa-solid fa-chevron-right text-[10px] text-gray-300 group-hover:text-brand-purple"></i>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
           </aside>
 
           {/* Hero Banner Carousel */}
@@ -563,65 +610,92 @@ export function CustomerHomePage() {
           </div>
 
           <div className="flex-grow grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3.5 relative">
-            {flashSaleProducts.slice(0, 5).map((product, idx) => {
-              let displayPrice = Number(product.price);
-              let displayOldPrice = 0;
-              let discount = "";
-
-              if (product.is_flash_sale && product.flash_sale_discount_percent) {
-                displayOldPrice = displayPrice;
-                displayPrice = displayPrice * (1 - product.flash_sale_discount_percent / 100);
-                discount = `-${product.flash_sale_discount_percent}%`;
-              }
-              const imgUrl = product.product_images?.[0]?.image_url || "/giaodienkhachhang/img/banner/ip-1.png";
-
-              return (
+            {flashSaleLoading ? (
+              Array.from({ length: 5 }).map((_, idx) => (
                 <div
-                  key={product.id}
-                  className="bg-white p-3 rounded-xl border border-gray-200 relative flex flex-col justify-between hover:shadow-md transition-shadow group"
+                  key={`fs-skeleton-${idx}`}
+                  className="bg-white p-3 rounded-xl border border-gray-200 animate-pulse flex flex-col justify-between h-[230px]"
                 >
                   <div>
-                    {discount && (
-                      <span className="absolute top-2 left-2 bg-red-500 text-white text-[10px] px-1.5 py-0.5 rounded-md font-bold z-10">
-                        {discount}
-                      </span>
-                    )}
-                    <button
-                      onClick={() => handleDbWishlist(product)}
-                      className={`absolute top-2 right-2 z-10 transition-colors ${
-                        isInWishlist(Number(product.id)) ? "text-red-500" : "text-gray-300 hover:text-red-500"
-                      }`}
-                    >
-                      <i className={`${isInWishlist(Number(product.id)) ? "fa-solid" : "fa-regular"} fa-heart text-[15px]`}></i>
-                    </button>
-                    <Link href={`/chitietsanpham?slug=${product.slug}`} className="h-[120px] mb-2 flex items-center justify-center block">
-                      <img alt={product.name} className="max-h-full object-contain" src={imgUrl} />
-                    </Link>
-                    <h4 className="text-[12px] font-semibold text-gray-800 line-clamp-2 mb-1">
-                      <Link href={`/chitietsanpham?slug=${product.slug}`} className="hover:text-[#4f22d6]">{product.name}</Link>
-                    </h4>
+                    <div className="w-full h-[120px] bg-gray-100 rounded-lg mb-2"></div>
+                    <div className="h-3 bg-gray-200 rounded w-3/4 mb-2"></div>
+                    <div className="h-3 bg-gray-200 rounded w-1/2"></div>
                   </div>
-                  <div>
-                    <p className="text-[#4f22d6] font-extrabold text-[13px]">{formatCurrency(displayPrice)}</p>
-                    {displayOldPrice > 0 && <p className="text-[10px] text-gray-400 line-through">{formatCurrency(displayOldPrice)}</p>}
-                    <div className="flex items-center justify-between mt-2 pt-1 border-t border-gray-50">
-                      <div className="flex text-amber-400 text-[9px] gap-0.5">
-                        {Array.from({ length: 5 }).map((_, i) => (
-                          <i key={i} className="fa-solid fa-star"></i>
-                        ))}
-                        <span className="text-gray-400 text-[9px] ml-0.5">(99)</span>
-                      </div>
-                      <button
-                        onClick={() => addDbProductToCart(product)}
-                        className="bg-[#4f22d6] text-white w-6 h-6 rounded-md flex items-center justify-center hover:opacity-90 active:scale-90 transition-all"
-                      >
-                        <i className="fa-solid fa-cart-plus text-[11px]"></i>
-                      </button>
+                  <div className="mt-4">
+                    <div className="h-4 bg-gray-200 rounded w-1/3 mb-2"></div>
+                    <div className="flex justify-between items-center">
+                      <div className="h-3 bg-gray-200 rounded w-1/2"></div>
+                      <div className="w-6 h-6 bg-gray-200 rounded-md"></div>
                     </div>
                   </div>
                 </div>
-              );
-            })}
+              ))
+            ) : flashSaleProducts.length > 0 ? (
+              flashSaleProducts.slice(0, 5).map((product, idx) => {
+                let displayPrice = Number(product.price);
+                let displayOldPrice = 0;
+                let discount = "";
+
+                if (product.is_flash_sale && product.flash_sale_discount_percent) {
+                  displayOldPrice = displayPrice;
+                  displayPrice = displayPrice * (1 - product.flash_sale_discount_percent / 100);
+                  discount = `-${product.flash_sale_discount_percent}%`;
+                }
+                const imgUrl = product.product_images?.[0]?.image_url || "/giaodienkhachhang/img/banner/ip-1.png";
+
+                return (
+                  <div
+                    key={product.id}
+                    className="bg-white p-3 rounded-xl border border-gray-200 relative flex flex-col justify-between hover:shadow-md transition-shadow group"
+                  >
+                    <div>
+                      {discount && (
+                        <span className="absolute top-2 left-2 bg-red-500 text-white text-[10px] px-1.5 py-0.5 rounded-md font-bold z-10">
+                          {discount}
+                        </span>
+                      )}
+                      <button
+                        onClick={() => handleDbWishlist(product)}
+                        className={`absolute top-2 right-2 z-10 transition-colors ${
+                          isInWishlist(Number(product.id)) ? "text-red-500" : "text-gray-300 hover:text-red-500"
+                        }`}
+                      >
+                        <i className={`${isInWishlist(Number(product.id)) ? "fa-solid" : "fa-regular"} fa-heart text-[15px]`}></i>
+                      </button>
+                      <Link href={`/chitietsanpham?slug=${product.slug}`} className="h-[120px] mb-2 flex items-center justify-center block">
+                        <img alt={product.name} className="max-h-full object-contain" src={imgUrl} />
+                      </Link>
+                      <h4 className="text-[12px] font-semibold text-gray-800 line-clamp-2 mb-1">
+                        <Link href={`/chitietsanpham?slug=${product.slug}`} className="hover:text-[#4f22d6]">{product.name}</Link>
+                      </h4>
+                    </div>
+                    <div>
+                      <p className="text-[#4f22d6] font-extrabold text-[13px]">{formatCurrency(displayPrice)}</p>
+                      {displayOldPrice > 0 && <p className="text-[10px] text-gray-400 line-through">{formatCurrency(displayOldPrice)}</p>}
+                      <div className="flex items-center justify-between mt-2 pt-1 border-t border-gray-50">
+                        <div className="flex text-amber-400 text-[9px] gap-0.5">
+                          {Array.from({ length: 5 }).map((_, i) => (
+                            <i key={i} className="fa-solid fa-star"></i>
+                          ))}
+                          <span className="text-gray-400 text-[9px] ml-0.5">(99)</span>
+                        </div>
+                        <button
+                          onClick={() => addDbProductToCart(product)}
+                          className="bg-[#4f22d6] text-white w-6 h-6 rounded-md flex items-center justify-center hover:opacity-90 active:scale-90 transition-all"
+                        >
+                          <i className="fa-solid fa-cart-plus text-[11px]"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })
+            ) : (
+              <div className="col-span-full flex flex-col items-center justify-center py-10 text-gray-400 bg-white rounded-xl border border-gray-100 w-full">
+                <i className="fa-solid fa-box-open text-[24px] mb-2 text-gray-300"></i>
+                <span className="text-[12px]">Không có sản phẩm khuyến mãi</span>
+              </div>
+            )}
           </div>
         </section>
 
@@ -753,51 +827,78 @@ export function CustomerHomePage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3.5">
-            {suggestionsProducts.slice(0, visibleSuggestions).map((product, idx) => {
-              const price = Number(product.price);
-              const imgUrl = product.product_images?.[0]?.image_url || "/giaodienkhachhang/img/banner/ip-1.png";
-
-              return (
+            {suggestionsLoading ? (
+              Array.from({ length: 5 }).map((_, idx) => (
                 <div
-                  key={product.id}
-                  className="bg-white p-3 rounded-xl border border-gray-200 relative flex flex-col justify-between hover:shadow-md transition-shadow group animate-fadeIn"
+                  key={`suggest-skeleton-${idx}`}
+                  className="bg-white p-3 rounded-xl border border-gray-200 animate-pulse flex flex-col justify-between h-[250px]"
                 >
                   <div>
-                    <button
-                      onClick={() => handleDbWishlist(product)}
-                      className={`absolute top-2 right-2 z-10 transition-colors ${
-                        isInWishlist(Number(product.id)) ? "text-red-500" : "text-gray-300 hover:text-red-500"
-                      }`}
-                    >
-                      <i className={`${isInWishlist(Number(product.id)) ? "fa-solid" : "fa-regular"} fa-heart text-[15px]`}></i>
-                    </button>
-                    <Link href={`/chitietsanpham?slug=${product.slug}`} className="h-[140px] mb-2 flex items-center justify-center p-2 block">
-                      <img alt={product.name} className="max-h-full object-contain mix-blend-multiply" src={imgUrl} />
-                    </Link>
-                    <h4 className="text-[12px] font-semibold text-gray-800 line-clamp-2 mb-1">
-                      <Link href={`/chitietsanpham?slug=${product.slug}`} className="hover:text-[#4f22d6]">{product.name}</Link>
-                    </h4>
+                    <div className="w-full h-[140px] bg-gray-100 rounded-lg mb-2"></div>
+                    <div className="h-3 bg-gray-200 rounded w-3/4 mb-2"></div>
+                    <div className="h-3 bg-gray-200 rounded w-1/2"></div>
                   </div>
-                  <div className="mt-2">
-                    <p className="text-[#4f22d6] font-extrabold text-[13px]">{formatCurrency(price)}</p>
-                    <div className="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
-                      <div className="flex text-amber-400 text-[9px] gap-0.5">
-                        {Array.from({ length: 5 }).map((_, i) => (
-                          <i key={i} className="fa-solid fa-star"></i>
-                        ))}
-                        <span className="text-gray-400 text-[9px] ml-0.5">(88)</span>
-                      </div>
-                      <button
-                        onClick={() => addDbProductToCart(product)}
-                        className="bg-gray-100 text-gray-600 hover:bg-[#4f22d6] hover:text-white w-6 h-6 rounded-md flex items-center justify-center transition-colors active:scale-90"
-                      >
-                        <i className="fa-solid fa-cart-plus text-[11px]"></i>
-                      </button>
+                  <div className="mt-4">
+                    <div className="h-4 bg-gray-200 rounded w-1/3 mb-2"></div>
+                    <div className="flex justify-between items-center">
+                      <div className="h-3 bg-gray-200 rounded w-1/2"></div>
+                      <div className="w-6 h-6 bg-gray-200 rounded-md"></div>
                     </div>
                   </div>
                 </div>
-              );
-            })}
+              ))
+            ) : suggestionsProducts.length > 0 ? (
+              suggestionsProducts.slice(0, visibleSuggestions).map((product, idx) => {
+                const price = Number(product.price);
+                const imgUrl = product.product_images?.[0]?.image_url || "/giaodienkhachhang/img/banner/ip-1.png";
+
+                return (
+                  <div
+                    key={product.id}
+                    className="bg-white p-3 rounded-xl border border-gray-200 relative flex flex-col justify-between hover:shadow-md transition-shadow group animate-fadeIn"
+                  >
+                    <div>
+                      <button
+                        onClick={() => handleDbWishlist(product)}
+                        className={`absolute top-2 right-2 z-10 transition-colors ${
+                          isInWishlist(Number(product.id)) ? "text-red-500" : "text-gray-300 hover:text-red-500"
+                        }`}
+                      >
+                        <i className={`${isInWishlist(Number(product.id)) ? "fa-solid" : "fa-regular"} fa-heart text-[15px]`}></i>
+                      </button>
+                      <Link href={`/chitietsanpham?slug=${product.slug}`} className="h-[140px] mb-2 flex items-center justify-center p-2 block">
+                        <img alt={product.name} className="max-h-full object-contain mix-blend-multiply" src={imgUrl} />
+                      </Link>
+                      <h4 className="text-[12px] font-semibold text-gray-800 line-clamp-2 mb-1">
+                        <Link href={`/chitietsanpham?slug=${product.slug}`} className="hover:text-[#4f22d6]">{product.name}</Link>
+                      </h4>
+                    </div>
+                    <div className="mt-2">
+                      <p className="text-[#4f22d6] font-extrabold text-[13px]">{formatCurrency(price)}</p>
+                      <div className="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
+                        <div className="flex text-amber-400 text-[9px] gap-0.5">
+                          {Array.from({ length: 5 }).map((_, i) => (
+                            <i key={i} className="fa-solid fa-star"></i>
+                          ))}
+                          <span className="text-gray-400 text-[9px] ml-0.5">(88)</span>
+                        </div>
+                        <button
+                          onClick={() => addDbProductToCart(product)}
+                          className="bg-gray-100 text-gray-600 hover:bg-[#4f22d6] hover:text-white w-6 h-6 rounded-md flex items-center justify-center transition-colors active:scale-90"
+                        >
+                          <i className="fa-solid fa-cart-plus text-[11px]"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })
+            ) : (
+              <div className="col-span-full flex flex-col items-center justify-center py-10 text-gray-400 bg-white rounded-xl border border-gray-100 w-full">
+                <i className="fa-solid fa-box-open text-[24px] mb-2 text-gray-300"></i>
+                <span className="text-[12px]">Không có sản phẩm gợi ý</span>
+              </div>
+            )}
           </div>
 
           {/* Load More Suggestions Trigger */}
@@ -904,7 +1005,7 @@ export function CustomerHomePage() {
                 <div>
                   <div className="h-44 overflow-hidden relative bg-gray-50 flex items-center justify-center">
                     <img
-                      src={post.image_url || "/giaodienkhachhang/img/banner/ip-1.png"}
+                      src={post.thumbnail_url || post.image_url || "/giaodienkhachhang/icon/ip-1.png"}
                       alt={post.title}
                       className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
                     />
@@ -916,14 +1017,14 @@ export function CustomerHomePage() {
                     <span className="text-[10px] text-gray-400 font-semibold block">
                       {new Date(post.created_at || post.createdAt).toLocaleDateString("vi-VN")}
                     </span>
-                    <h4 className="font-bold text-[14px] text-gray-800 line-clamp-2 leading-tight group-hover:text-brand-purple transition-colors">
-                      {post.title}
+                    <h4 className="font-bold text-[14px] text-gray-800 line-clamp-2 leading-tight hover:text-brand-purple transition-colors">
+                      <Link href={`/tintuc?slug=${post.slug}`}>{post.title}</Link>
                     </h4>
                     <p className="text-[11px] text-gray-500 line-clamp-2 leading-relaxed">{post.excerpt || "Đang cập nhật..."}</p>
                   </div>
                 </div>
                 <div className="p-4 pt-0">
-                  <Link href="/quanlytintuc" className="text-brand-purple text-[11px] font-bold hover:text-purple-700 inline-flex items-center gap-1">
+                  <Link href={`/tintuc?slug=${post.slug}`} className="text-brand-purple text-[11px] font-bold hover:text-purple-700 inline-flex items-center gap-1">
                     Đọc tiếp <i className="fa-solid fa-arrow-right-long"></i>
                   </Link>
                 </div>

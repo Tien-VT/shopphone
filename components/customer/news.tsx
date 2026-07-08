@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useSearchParams, useRouter } from "next/navigation";
 import { CustomerShell } from "../customer-shell";
 
 const newsCategories = [
@@ -21,6 +22,25 @@ export function CustomerNewsPage() {
   const [articles, setArticles] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedArticle, setSelectedArticle] = useState<any>(null);
+
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const articleSlug = searchParams.get("slug");
+
+  // Auto-open article from slug in query params
+  useEffect(() => {
+    if (articleSlug && articles.length > 0) {
+      const found = articles.find((a: any) => a.slug === articleSlug);
+      if (found) {
+        setSelectedArticle(found);
+      }
+    }
+  }, [articleSlug, articles]);
+
+  const handleCloseModal = () => {
+    setSelectedArticle(null);
+    router.push("/tintuc");
+  };
 
   useEffect(() => {
     setLoading(true);
@@ -148,7 +168,7 @@ export function CustomerNewsPage() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
               
               <button
-                onClick={() => setSelectedArticle(null)}
+                onClick={handleCloseModal}
                 className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/20 hover:bg-white/40 text-white backdrop-blur-md flex items-center justify-center transition-colors cursor-pointer border border-white/10"
               >
                 <span className="material-symbols-outlined text-[20px]">close</span>
@@ -179,7 +199,7 @@ export function CustomerNewsPage() {
             {/* Modal footer */}
             <div className="px-6 py-4 bg-slate-50 border-t border-slate-100 flex justify-end shrink-0">
               <button 
-                onClick={() => setSelectedArticle(null)}
+                onClick={handleCloseModal}
                 className="bg-brand-purple text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-purple-700 transition-colors cursor-pointer"
               >
                 Đóng bài đọc

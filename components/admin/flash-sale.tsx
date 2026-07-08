@@ -14,6 +14,7 @@ export function AdminFlashSalePage() {
 
   const [allProducts, setAllProducts] = useState<any[]>([]);
   const [selectedProducts, setSelectedProducts] = useState<{ productId: string; discountPercent: number }[]>([]);
+  const [productSearch, setProductSearch] = useState("");
 
   const [formData, setFormData] = useState({
     title: "",
@@ -97,6 +98,17 @@ export function AdminFlashSalePage() {
       setSelectedProducts([]);
     }
     setShowModal(true);
+  };
+
+  const handleToggleProduct = (productId: string) => {
+    setSelectedProducts((prev) => {
+      const exists = prev.some((p) => p.productId === productId);
+      if (exists) {
+        return prev.filter((p) => p.productId !== productId);
+      } else {
+        return [...prev, { productId, discountPercent: 10 }];
+      }
+    });
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -307,74 +319,78 @@ export function AdminFlashSalePage() {
         {/* Campaign Form Modal */}
         {showModal && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/55 backdrop-blur-sm">
-            <div className="bg-white rounded-3xl w-full max-w-[720px] shadow-2xl overflow-hidden border border-outline-variant flex flex-col max-h-[90vh]">
+            <div className="bg-white rounded-3xl w-full max-w-[1000px] shadow-2xl overflow-hidden border border-outline-variant flex flex-col max-h-[90vh]">
               <div className="p-6 bg-gradient-to-r from-primary to-primary-container text-white flex justify-between items-center shrink-0">
                 <h3 className="text-[18px] font-bold">{editingCampaign ? "Chỉnh sửa chiến dịch" : "Tạo chiến dịch mới"}</h3>
                 <button onClick={() => setShowModal(false)} className="w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center text-white font-bold cursor-pointer">✕</button>
               </div>
 
-              <form onSubmit={handleFormSubmit} className="p-6 space-y-4 flex-grow overflow-y-auto">
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-[13px] font-semibold text-gray-600">Tiêu đề chiến dịch</label>
-                  <input
-                    name="title"
-                    required
-                    type="text"
-                    className="w-full bg-gray-50 border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-4 py-3 outline-none text-[14px] text-gray-800"
-                    placeholder="Ví dụ: Siêu Sale Khai Trương"
-                    value={formData.title}
-                    onChange={handleTitleChange}
-                  />
+              <form onSubmit={handleFormSubmit} className="p-6 space-y-4 flex-grow overflow-y-auto text-gray-800">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-[13px] font-semibold text-gray-600">Tiêu đề chiến dịch</label>
+                    <input
+                      name="title"
+                      required
+                      type="text"
+                      className="w-full bg-gray-50 border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-4 py-3 outline-none text-[14px] text-gray-800"
+                      placeholder="Ví dụ: Siêu Sale Khai Trương"
+                      value={formData.title}
+                      onChange={handleTitleChange}
+                    />
+                  </div>
+
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-[13px] font-semibold text-gray-600">Slug</label>
+                    <input
+                      name="slug"
+                      required
+                      type="text"
+                      className="w-full bg-gray-50 border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-4 py-3 outline-none text-[14px] text-gray-800 font-mono text-xs"
+                      value={formData.slug}
+                      onChange={handleInputChange}
+                    />
+                  </div>
                 </div>
 
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-[13px] font-semibold text-gray-600">Slug</label>
-                  <input
-                    name="slug"
-                    required
-                    type="text"
-                    className="w-full bg-gray-50 border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-4 py-3 outline-none text-[14px] text-gray-800 font-mono text-xs"
-                    value={formData.slug}
-                    onChange={handleInputChange}
-                  />
-                </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-[13px] font-semibold text-gray-600">Thời gian bắt đầu</label>
+                    <input
+                      name="startAt"
+                      required
+                      type="datetime-local"
+                      className="w-full bg-gray-50 border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-4 py-3 outline-none text-[14px] text-gray-800"
+                      value={formData.startAt}
+                      onChange={handleInputChange}
+                    />
+                  </div>
 
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-[13px] font-semibold text-gray-600">Thời gian bắt đầu</label>
-                  <input
-                    name="startAt"
-                    required
-                    type="datetime-local"
-                    className="w-full bg-gray-50 border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-4 py-3 outline-none text-[14px] text-gray-800"
-                    value={formData.startAt}
-                    onChange={handleInputChange}
-                  />
-                </div>
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-[13px] font-semibold text-gray-600">Thời gian kết thúc</label>
+                    <input
+                      name="endAt"
+                      required
+                      type="datetime-local"
+                      className="w-full bg-gray-50 border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-4 py-3 outline-none text-[14px] text-gray-800"
+                      value={formData.endAt}
+                      onChange={handleInputChange}
+                    />
+                  </div>
 
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-[13px] font-semibold text-gray-600">Thời gian kết thúc</label>
-                  <input
-                    name="endAt"
-                    required
-                    type="datetime-local"
-                    className="w-full bg-gray-50 border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-4 py-3 outline-none text-[14px] text-gray-800"
-                    value={formData.endAt}
-                    onChange={handleInputChange}
-                  />
-                </div>
-
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-[13px] font-semibold text-gray-600">Trạng thái</label>
-                  <select
-                    name="status"
-                    className="w-full bg-gray-50 border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-4 py-3 outline-none text-[14px] text-gray-800 bg-white"
-                    value={formData.status}
-                    onChange={handleInputChange}
-                  >
-                    <option value="scheduled">Chờ bắt đầu</option>
-                    <option value="active">Đang diễn ra</option>
-                    <option value="ended">Đã kết thúc</option>
-                  </select>
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-[13px] font-semibold text-gray-600">Trạng thái</label>
+                    <select
+                      name="status"
+                      className="w-full bg-gray-50 border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-4 py-3 outline-none text-[14px] text-gray-800 bg-white"
+                      value={formData.status}
+                      onChange={handleInputChange}
+                    >
+                      <option value="scheduled">Chờ bắt đầu</option>
+                      <option value="active">Đang diễn ra</option>
+                      <option value="ended">Đã kết thúc</option>
+                    </select>
+                  </div>
                 </div>
 
                 <div className="flex flex-col gap-1.5">
@@ -391,97 +407,87 @@ export function AdminFlashSalePage() {
 
                 {/* Chọn sản phẩm tham gia Flash Sale */}
                 <div className="border-t border-gray-100 pt-4 space-y-3">
-                  <h4 className="text-[14px] font-bold text-gray-700">Sản phẩm tham gia Flash Sale</h4>
-                  
-                  <div className="flex gap-2">
-                    <select
-                      id="fs-product-select"
-                      className="flex-grow bg-gray-50 border border-outline-variant rounded-xl px-3 py-2.5 text-[13px] text-gray-800 bg-white focus:border-primary focus:ring-1 focus:ring-primary outline-none"
-                      defaultValue=""
-                    >
-                      <option value="" disabled>-- Chọn sản phẩm --</option>
-                      {allProducts.filter(p => !selectedProducts.some(sp => sp.productId === String(p.id))).map(p => (
-                        <option key={p.id.toString()} value={p.id.toString()}>
-                          {p.name} ({p.sku})
-                        </option>
-                      ))}
-                    </select>
-                    
-                    <input
-                      id="fs-discount-input"
-                      type="number"
-                      min="1"
-                      max="100"
-                      placeholder="% Giảm"
-                      defaultValue="10"
-                      className="w-20 bg-gray-50 border border-outline-variant rounded-xl px-3 py-2.5 text-[13px] text-gray-800 outline-none focus:border-primary focus:ring-1 focus:ring-primary"
-                    />
-                    
-                    <button
-                      type="button"
-                      onClick={() => {
-                        const selectEl = document.getElementById("fs-product-select") as HTMLSelectElement;
-                        const discountEl = document.getElementById("fs-discount-input") as HTMLInputElement;
-                        if (selectEl && selectEl.value && discountEl) {
-                          const pId = selectEl.value;
-                          const pct = Number(discountEl.value || 0);
-                          if (pct <= 0 || pct > 100) {
-                            showToast("✗ Phần trăm giảm giá phải từ 1 đến 100%");
-                            return;
-                          }
-                          setSelectedProducts(prev => [...prev, { productId: pId, discountPercent: pct }]);
-                          selectEl.value = "";
-                        } else {
-                          showToast("✗ Vui lòng chọn sản phẩm muốn thêm");
-                        }
-                      }}
-                      className="bg-primary text-white px-4 py-2.5 rounded-xl text-[12px] font-bold hover:opacity-90 active:scale-95 shrink-0 cursor-pointer transition-all shadow-sm"
-                    >
-                      Thêm
-                    </button>
+                  <div className="flex items-center justify-between">
+                    <h4 className="text-[14px] font-bold text-gray-700">Chọn sản phẩm tham gia Flash Sale ({selectedProducts.length} đã chọn)</h4>
+                    <div className="relative w-64">
+                      <input
+                        type="text"
+                        placeholder="Tìm kiếm sản phẩm..."
+                        className="w-full bg-gray-50 border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary rounded-xl pl-9 pr-4 py-1.5 outline-none text-[12px] text-gray-800"
+                        value={productSearch}
+                        onChange={(e) => setProductSearch(e.target.value)}
+                      />
+                      <i className="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-[11px]" />
+                    </div>
                   </div>
-
-                  {/* Danh sách sản phẩm đã thêm */}
-                  {selectedProducts.length > 0 ? (
-                    <div className="border border-purple-50 bg-purple-50/5 rounded-2xl p-3 space-y-2 max-h-[180px] overflow-y-auto pr-1">
-                      {selectedProducts.map((sp, idx) => {
-                        const prod = allProducts.find(p => String(p.id) === sp.productId);
+                  
+                  <div className="flex-grow grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3.5 relative max-h-[300px] overflow-y-auto border border-gray-100 rounded-2xl p-3 bg-gray-50/50">
+                    {allProducts
+                      .filter((p) => {
+                        const query = productSearch.toLowerCase();
                         return (
-                          <div key={sp.productId} className="flex items-center justify-between gap-3 text-[12px] p-2 bg-white border border-gray-100 rounded-xl">
-                            <span className="font-semibold text-gray-700 truncate flex-grow">
-                              {prod ? prod.name : `Sản phẩm #${sp.productId}`}
-                            </span>
-                            <div className="flex items-center gap-2 shrink-0">
-                              <span className="text-gray-400">Giảm:</span>
-                              <input
-                                type="number"
-                                min="1"
-                                max="100"
-                                value={sp.discountPercent}
-                                onChange={(e) => {
-                                  const val = Number(e.target.value);
-                                  setSelectedProducts(prev => prev.map((item, i) => i === idx ? { ...item, discountPercent: val } : item));
-                                }}
-                                className="w-14 border border-gray-200 rounded px-1.5 py-0.5 text-center font-bold text-primary"
-                              />
-                              <span className="font-bold text-gray-500">%</span>
-                              <button
-                                type="button"
-                                onClick={() => {
-                                  setSelectedProducts(prev => prev.filter(item => item.productId !== sp.productId));
-                                }}
-                                className="text-red-500 hover:text-red-700 font-bold ml-1 text-[16px] cursor-pointer"
-                              >
-                                &times;
-                              </button>
+                          p.name.toLowerCase().includes(query) ||
+                          (p.sku || "").toLowerCase().includes(query)
+                        );
+                      })
+                      .map((p) => {
+                        const isSelected = selectedProducts.some((sp) => sp.productId === String(p.id));
+                        const currentSp = selectedProducts.find((sp) => sp.productId === String(p.id));
+                        const discountVal = currentSp ? currentSp.discountPercent : 10;
+                        const imgUrl = p.product_images?.[0]?.image_url || "/giaodienkhachhang/img/banner/ip-1.png";
+
+                        return (
+                          <div
+                            key={p.id.toString()}
+                            onClick={() => handleToggleProduct(String(p.id))}
+                            className={`bg-white p-3 rounded-xl border relative flex flex-col justify-between hover:shadow-md transition-shadow group cursor-pointer ${
+                              isSelected ? "border-[#4f22d6] ring-1 ring-[#4f22d6]/50" : "border-gray-200"
+                            }`}
+                          >
+                            <div>
+                              {isSelected && (
+                                <span className="absolute top-2 left-2 bg-[#4f22d6] text-white text-[9px] px-1.5 py-0.5 rounded-md font-bold z-10">
+                                  Đã chọn
+                                </span>
+                              )}
+                              <div className="h-[90px] mb-2 flex items-center justify-center">
+                                <img alt={p.name} className="max-h-full object-contain" src={imgUrl} />
+                              </div>
+                              <h4 className="text-[11px] font-semibold text-gray-800 line-clamp-2 mb-1">
+                                {p.name}
+                              </h4>
+                              <p className="text-[9px] text-gray-400 font-mono">{p.sku}</p>
+                            </div>
+                            
+                            <div className="mt-2 pt-2 border-t border-gray-50 flex flex-col gap-1" onClick={(e) => e.stopPropagation()}>
+                              <p className="text-[#4f22d6] font-extrabold text-[12px]">
+                                {Number(p.price).toLocaleString("vi-VN")}đ
+                              </p>
+                              {isSelected && (
+                                <div className="flex items-center justify-between gap-1 mt-1">
+                                  <span className="text-[10px] text-gray-500 shrink-0">Giảm %:</span>
+                                  <input
+                                    type="number"
+                                    min="1"
+                                    max="100"
+                                    value={discountVal}
+                                    onChange={(e) => {
+                                      const val = Math.min(100, Math.max(1, Number(e.target.value)));
+                                      setSelectedProducts((prev) =>
+                                        prev.map((item) =>
+                                          item.productId === String(p.id) ? { ...item, discountPercent: val } : item
+                                        )
+                                      );
+                                    }}
+                                    className="w-12 border border-gray-200 rounded px-1 py-0.5 text-center font-bold text-xs text-[#4f22d6] focus:border-[#4f22d6] outline-none"
+                                  />
+                                </div>
+                              )}
                             </div>
                           </div>
                         );
                       })}
-                    </div>
-                  ) : (
-                    <p className="text-xs text-gray-400 italic text-center py-2">Chưa có sản phẩm nào tham gia.</p>
-                  )}
+                  </div>
                 </div>
 
                 <div className="pt-4 flex gap-3 shrink-0">

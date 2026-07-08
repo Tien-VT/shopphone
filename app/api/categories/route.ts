@@ -14,7 +14,11 @@ export async function GET() {
       orderBy: { sort_order: "asc" },
     });
 
-    return NextResponse.json(serializeBigInt(categories));
+    return NextResponse.json(serializeBigInt(categories), {
+      headers: {
+        "Cache-Control": "public, s-maxage=300, stale-while-revalidate=600",
+      },
+    });
   } catch (error: any) {
     return NextResponse.json(
       { error: error.message || "Failed to fetch categories" },

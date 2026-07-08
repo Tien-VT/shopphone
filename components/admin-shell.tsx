@@ -37,6 +37,7 @@ const menuGroups = [
     title: "Khuyến mãi & Marketing",
     items: [
       { key: "flashsale", label: "Flash Sale", icon: "bolt", href: "/quanlyflashsale" },
+      { key: "flashsaletrangchu", label: "Flash Sale Trang Chủ", icon: "offline_bolt", href: "/quanlyflashsaletrangchu" },
       { key: "voucher", label: "Mã giảm giá (Voucher)", icon: "confirmation_number", href: "/quanlyvoucher" },
       { key: "offers", label: "Chương trình ưu đãi", icon: "redeem", href: "/quanlyuudai" },
     ]
