@@ -69,16 +69,8 @@ async function syncFlashSaleState(prisma: any) {
     }
   }
 
-  // If no active campaign, make sure all products have is_flash_sale = false
-  const flaggedCount = await prisma.products.count({ where: { is_flash_sale: true } });
-  if (flaggedCount > 0) {
-    await prisma.products.updateMany({
-      data: {
-        is_flash_sale: false,
-        flash_sale_discount_percent: null
-      }
-    });
-  }
+  // NOTE: Khi không có active campaign, KHÔNG reset is_flash_sale của products
+  // vì admin có thể cài thủ công qua trang "Flash Sale Trang Chủ" và muốn giữ vĩnh viễn.
 }
 
 export async function GET() {
