@@ -17,7 +17,7 @@ export async function GET() {
 
     const products = await prisma.products.findMany({
       where: {
-        is_flash_sale: true,
+        is_homepage_flash_sale: true,
         status: "active",
       },
       include: {
@@ -26,7 +26,14 @@ export async function GET() {
       },
     });
 
-    return NextResponse.json(serializeBigInt(products));
+    // Map homepage columns to flash_sale columns for admin frontend compatibility
+    const mapped = products.map((p) => ({
+      ...p,
+      is_flash_sale: true,
+      flash_sale_discount_percent: p.homepage_flash_sale_discount_percent,
+    }));
+
+    return NextResponse.json(serializeBigInt(mapped));
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
@@ -50,21 +57,21 @@ export async function PUT(req: Request) {
     }
 
     await prisma.$transaction(async (tx) => {
-      // 1. Reset all products flash sale status
+      // 1. Reset all products homepage flash sale status
       await tx.products.updateMany({
         data: {
-          is_flash_sale: false,
-          flash_sale_discount_percent: null,
+          is_homepage_flash_sale: false,
+          homepage_flash_sale_discount_percent: null,
         },
       });
 
-      // 2. Set is_flash_sale = true and discount percent for the selected 5 products
+      // 2. Set is_homepage_flash_sale = true and discount percent for the selected 5 products
       for (const sp of selectedProducts) {
         await tx.products.update({
           where: { id: BigInt(sp.productId) },
           data: {
-            is_flash_sale: true,
-            flash_sale_discount_percent: Number(sp.discountPercent || 10),
+            is_homepage_flash_sale: true,
+            homepage_flash_sale_discount_percent: Number(sp.discountPercent || 10),
           },
         });
       }

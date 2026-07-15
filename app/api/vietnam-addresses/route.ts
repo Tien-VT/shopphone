@@ -1,9 +1,8 @@
 import { NextResponse } from "next/server";
-import { promises as fs } from "fs";
-import path from "path";
-
-const BEFORE_PATH = "d:/website-ban-dthoai/vietnam-divisions-js/src/seeds/vietnam";
-const AFTER_PATH = "d:/website-ban-dthoai/vietnamese-provinces-database/json";
+import provincesBefore from "@/data/vietnam/province.json";
+import districtsBefore from "@/data/vietnam/district.json";
+import communesBefore from "@/data/vietnam/commune.json";
+import provincesAfter from "@/data/vietnam/simplified_json_generated_data_vn_units.json";
 
 export async function GET(req: Request) {
   try {
@@ -18,33 +17,26 @@ export async function GET(req: Request) {
 
     if (type === "before") {
       if (level === "province") {
-        const fileContent = await fs.readFile(path.join(BEFORE_PATH, "province.json"), "utf-8");
-        return NextResponse.json(JSON.parse(fileContent));
+        return NextResponse.json(provincesBefore);
       }
 
       if (level === "district") {
         if (!parentId) return NextResponse.json({ error: "Missing parentId" }, { status: 400 });
-        const fileContent = await fs.readFile(path.join(BEFORE_PATH, "district.json"), "utf-8");
-        const districts = JSON.parse(fileContent);
-        const filtered = districts.filter((d: any) => d.idProvince === parentId);
+        const filtered = districtsBefore.filter((d: any) => d.idProvince === parentId);
         return NextResponse.json(filtered);
       }
 
       if (level === "commune") {
         if (!parentId) return NextResponse.json({ error: "Missing parentId" }, { status: 400 });
-        const fileContent = await fs.readFile(path.join(BEFORE_PATH, "commune.json"), "utf-8");
-        const communes = JSON.parse(fileContent);
-        const filtered = communes.filter((c: any) => c.idDistrict === parentId);
+        const filtered = communesBefore.filter((c: any) => c.idDistrict === parentId);
         return NextResponse.json(filtered);
       }
     }
 
     if (type === "after") {
       if (level === "province") {
-        const fileContent = await fs.readFile(path.join(AFTER_PATH, "simplified_json_generated_data_vn_units.json"), "utf-8");
-        const data = JSON.parse(fileContent);
         // Map to return only code, name, fullName for performance (excluding large Wards array)
-        const provinces = data.map((p: any) => ({
+        const provinces = provincesAfter.map((p: any) => ({
           code: p.Code,
           name: p.Name,
           fullName: p.FullName
@@ -54,9 +46,7 @@ export async function GET(req: Request) {
 
       if (level === "ward") {
         if (!parentId) return NextResponse.json({ error: "Missing parentId" }, { status: 400 });
-        const fileContent = await fs.readFile(path.join(AFTER_PATH, "simplified_json_generated_data_vn_units.json"), "utf-8");
-        const data = JSON.parse(fileContent);
-        const province = data.find((p: any) => p.Code === parentId);
+        const province = provincesAfter.find((p: any) => p.Code === parentId);
         if (!province) return NextResponse.json([]);
         return NextResponse.json(province.Wards || []);
       }

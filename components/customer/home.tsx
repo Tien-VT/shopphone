@@ -260,7 +260,7 @@ export function CustomerHomePage() {
 
     // Fetch flash sale products (exactly 5 products selected from admin)
     setFlashSaleLoading(true);
-    fetch("/api/products?flash_sale=true")
+    fetch("/api/products?homepage_flash_sale=true")
       .then((res) => (res.ok ? res.json() : Promise.reject()))
       .then((prodData) => {
         const items = prodData.items || [];

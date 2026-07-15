@@ -28,7 +28,13 @@ export async function GET(
       return NextResponse.json({ error: "Product not found" }, { status: 404 });
     }
 
-    return NextResponse.json(serializeBigInt(product));
+    const mappedProduct = { ...product };
+    if (mappedProduct.is_homepage_flash_sale) {
+      mappedProduct.is_flash_sale = true;
+      mappedProduct.flash_sale_discount_percent = mappedProduct.homepage_flash_sale_discount_percent;
+    }
+
+    return NextResponse.json(serializeBigInt(mappedProduct));
   } catch (error: any) {
     return NextResponse.json(
       { error: error.message || "Failed to fetch product details" },

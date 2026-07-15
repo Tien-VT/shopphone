@@ -184,6 +184,8 @@ model products {
   is_featured       Boolean          @default(false)
   is_flash_sale     Boolean          @default(false)
   flash_sale_discount_percent Int?
+  is_homepage_flash_sale       Boolean          @default(false)
+  homepage_flash_sale_discount_percent Int?
   status            products_status  @default(active)
   created_at        DateTime         @default(now()) @db.Timestamp(0)
   updated_at        DateTime         @default(now()) @db.Timestamp(0)

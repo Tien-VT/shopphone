@@ -9,6 +9,7 @@ export async function GET(req: Request) {
     const search = searchParams.get("search");
     const isFeatured = searchParams.get("featured") === "true";
     const isFlashSale = searchParams.get("flash_sale") === "true";
+    const isHomepageFlashSale = searchParams.get("homepage_flash_sale") === "true";
     const sort = searchParams.get("sort");
 
     const prisma = getPrisma();
@@ -40,6 +41,10 @@ export async function GET(req: Request) {
       where.is_flash_sale = true;
     }
 
+    if (isHomepageFlashSale) {
+      where.is_homepage_flash_sale = true;
+    }
+
     let orderBy: any = { created_at: "desc" };
     if (sort === "low-to-high") {
       orderBy = { price: "asc" };
@@ -65,7 +70,18 @@ export async function GET(req: Request) {
       },
     });
 
-    return NextResponse.json({ items: serializeBigInt(products) });
+    const mappedProducts = products.map((p: any) => {
+      if (p.is_homepage_flash_sale) {
+        return {
+          ...p,
+          is_flash_sale: true,
+          flash_sale_discount_percent: p.homepage_flash_sale_discount_percent,
+        };
+      }
+      return p;
+    });
+
+    return NextResponse.json({ items: serializeBigInt(mappedProducts) });
   } catch (error: any) {
     return NextResponse.json(
       { error: error.message || "Failed to fetch products" },
